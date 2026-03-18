@@ -13,6 +13,32 @@ dependencies = [
 [tool.poetry]
 packages = [{ include = "median_statistic" }]
 
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.15.6"
+pytest = "^9.0.2"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B"]  # базовые + импорты + best practices
+ignore = []
+
+[tool.ruff.lint.isort]
+known-first-party = ["median_statistic"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["S101"]  # разрешаем assert в тестах
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+# pythonpath = ["."]
+# pythonpath = ["median_statistic"]
+
+[tool.ruff.lint.flake8-tidy-imports]
+ban-relative-imports = "all"
+
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
