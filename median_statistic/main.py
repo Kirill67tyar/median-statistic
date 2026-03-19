@@ -10,17 +10,18 @@ OUTPUT_FUNCS = {
 }
 
 def load_data(file_paths: list[str]) -> list[dict]:
+    result = []
     for path in file_paths:
         try:
             with open(path, newline="", encoding="utf-8") as f:
-                return list(csv.DictReader(f))
+                result.extend(list(csv.DictReader(f)))
         except FileNotFoundError as e:
             print(e)
             sys.exit(1)
         except Exception as e:
             print(e)
             sys.exit(1)
-    return []
+    return result
 
 
 def main():
