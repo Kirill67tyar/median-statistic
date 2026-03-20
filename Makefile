@@ -1,6 +1,5 @@
 .PHONY: format check test run all
 
-# Основные команды
 all: format check test
 
 format:
@@ -14,7 +13,6 @@ check:
 test:
 	poetry run pytest
 
-# Удобный запуск примера
 run:
 	poetry run python -m median_statistic.main \
 		--files test-files/math.csv test-files/physics.csv test-files/programming.csv \

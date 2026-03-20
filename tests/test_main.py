@@ -47,6 +47,7 @@ def test_main_happy_path_prints_table(tmp_path, monkeypatch, capsys, write_csv):
 
 
 def test_load_data_exits_when_file_missing(capsys):
+    """Несуществующий файл → sys.exit(1) с понятным сообщением."""
     # Arrange
     missing_file = "missing-file.csv"
 
@@ -66,6 +67,7 @@ def test_load_data_exits_when_file_missing(capsys):
 
 
 def test_main_exits_on_invalid_report(tmp_path, monkeypatch, capsys, write_csv):
+    """Неверный --report → sys.exit(1) с перечислением доступных отчётов."""
     # Arrange
     file1 = write_csv(
         tmp_path / "file1.csv",
