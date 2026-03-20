@@ -17,6 +17,7 @@ packages = [{ include = "median_statistic" }]
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.15.6"
 pytest = "^9.0.2"
+pre-commit = "^4.5.1"
 
 [tool.ruff]
 line-length = 100

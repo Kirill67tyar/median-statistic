@@ -26,8 +26,7 @@ def test_main_happy_path_prints_table(tmp_path, monkeypatch, capsys, write_csv):
     # python -m median_statistic/main.py --files file1.csv file2.csv --report median-coffee
     monkeypatch.setattr(
         "sys.argv",
-        ["prog", "--files", str(file1), str(file2),
-         "--report", "median-coffee"],
+        ["prog", "--files", str(file1), str(file2), "--report", "median-coffee"],
     )
 
     # Act
@@ -63,7 +62,7 @@ def test_load_data_exits_when_file_missing(capsys):
 
     # Проверяем, что в консоль было выведено сообщение об ошибке
     captured = capsys.readouterr()
-    assert "No such file or directory" in captured.out
+    assert f"Ошибка: файл не найден — {missing_file}" in captured.out
 
 
 def test_main_exits_on_invalid_report(tmp_path, monkeypatch, capsys, write_csv):
@@ -91,4 +90,4 @@ Alice,100
     assert exc_info.value.code == 1
 
     captured = capsys.readouterr()
-    assert "Некорректный аргумент" in captured.out
+    assert "Некорректный аргумент --report: unknown-report" in captured.out

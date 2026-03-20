@@ -1,6 +1,6 @@
 import pytest
 
-from median_statistic.median_coffee.median_coffee import calculate_median_coffee
+from median_statistic.reports.median_coffee import calculate_median_coffee
 
 
 @pytest.mark.parametrize(
@@ -13,8 +13,7 @@ from median_statistic.median_coffee.median_coffee import calculate_median_coffee
                 {"student": "Иванов", "coffee_spent": "200"},
                 {"student": "Иванов", "coffee_spent": "400"},
             ],
-            [("Иванов", 250.0)]
-
+            [("Иванов", 250.0)],
         ),
         (
             [
@@ -22,8 +21,8 @@ from median_statistic.median_coffee.median_coffee import calculate_median_coffee
                 {"student": "Иванов", "coffee_spent": "300"},
                 {"student": "Иванов", "coffee_spent": "200"},
             ],
-            [("Иванов", 200)]
-        )
+            [("Иванов", 200)],
+        ),
     ],
     ids=[
         "Test even count values",
