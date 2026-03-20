@@ -1,13 +1,14 @@
 import argparse
 import csv
 import sys
-from median_coffee.median_coffee import calculate_median_coffee
+from median_statistic.median_coffee.median_coffee import calculate_median_coffee
 from tabulate import tabulate
 
 
 OUTPUT_FUNCS = {
     "median-coffee": calculate_median_coffee,
 }
+
 
 def load_data(file_paths: list[str]) -> list[dict]:
     result = []
@@ -35,11 +36,12 @@ def main():
     output_func = OUTPUT_FUNCS.get(arguments.report)
     if not output_func:
         print("Некорректный аргумент")
+        sys.exit(1)
     result = output_func(raw_data)
     print(
         tabulate(
             result,
-            headers=["student", "median coffee",],
+            headers=["student", "median_coffee",],
             tablefmt="grid",
         )
     )
